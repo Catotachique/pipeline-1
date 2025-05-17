@@ -12,9 +12,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cleanWs()
                 echo 'building'
                 sh '''
+                java -version
+                mvn -v
                 mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
                 touch ${WORKSPACE}/build/computer.txt
