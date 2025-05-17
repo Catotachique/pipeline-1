@@ -15,6 +15,7 @@ pipeline {
                 echo 'building'
                 sh '''
                 npm --version
+                node --version
                 mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
                 touch ${WORKSPACE}/build/computer.txt
@@ -23,7 +24,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Test') {
             steps {
                 echo 'test'
