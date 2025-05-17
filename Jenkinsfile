@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                cleanWs()
                 echo 'building'
                 sh '''
                 java -version
