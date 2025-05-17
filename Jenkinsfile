@@ -15,15 +15,6 @@ pipeline {
             steps {
                 cleanWs()
                 echo 'building'
-                sh '''
-                java -version
-                mvn -v
-                mkdir -p ${WORKSPACE}/build
-                echo $BUILD_FILE_NAME
-                touch ${WORKSPACE}/build/computer.txt
-                echo "Mainboard" >> ${WORKSPACE}/build/computer.txt
-                cat ${WORKSPACE}/build/computer.txt
-                '''
             }
         }
 
