@@ -15,6 +15,8 @@ pipeline {
             steps {
                 cleanWs()
                 echo 'building'
+                sh 'java -version'
+                sh 'mvn -v'
             }
         }
 
