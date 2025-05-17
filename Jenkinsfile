@@ -32,6 +32,11 @@ pipeline {
                 '''
             }
         }
+        stage('Packaging') {
+            steps {
+                echo 'packaging'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'deploy'
