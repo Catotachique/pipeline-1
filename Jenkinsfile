@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'node:18-alpine'
+            image 'maven:3.9.9-eclipse-temurin-21-alpine' // Maven + JDK 21
+            args '-v /root/.m2:/root/.m2' // cache Maven dependencies
         }
     }
     
@@ -14,8 +15,8 @@ pipeline {
             steps {
                 echo 'building'
                 sh '''
-                npm --version
-                node --version
+                java -version
+                mvn -v
                 mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
                 touch ${WORKSPACE}/build/computer.txt
@@ -29,7 +30,6 @@ pipeline {
             steps {
                 echo 'test'
                 sh '''
-                npm test
                 test -f build/computer.txt && echo "File exists." || echo "File does not exist."
                 grep Mainboard build/computer.txt
                 '''
