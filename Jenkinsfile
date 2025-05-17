@@ -29,6 +29,7 @@ pipeline {
             steps {
                 echo 'test'
                 sh '''
+                npm test
                 test -f build/computer.txt && echo "File exists." || echo "File does not exist."
                 grep Mainboard build/computer.txt
                 '''
