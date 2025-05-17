@@ -16,11 +16,11 @@ pipeline {
                 echo 'building'
                 sh '''
                 npm --version
-                mkdir -p build
+                mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
-                touch build/computer.txt
-                echo "Mainboard" >> build/computer.txt
-                cat build/computer.txt
+                touch ${WORKSPACE}/build/computer.txt
+                echo "Mainboard" >> ${WORKSPACE}/build/computer.txt
+                cat ${WORKSPACE}/build/computer.txt
                 '''
             }
         }
