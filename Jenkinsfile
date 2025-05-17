@@ -23,6 +23,7 @@ pipeline {
                 '''
             }
         }
+        
         stage('Test') {
             steps {
                 echo 'test'
@@ -32,11 +33,13 @@ pipeline {
                 '''
             }
         }
+
         stage('Packaging') {
             steps {
                 echo 'packaging'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'deploy'
