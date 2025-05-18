@@ -65,7 +65,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                echo '''docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}'''
+                echo 'docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}'
             }
         }
 
