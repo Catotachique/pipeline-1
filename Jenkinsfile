@@ -58,20 +58,14 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                script {
-                    echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
-                }
+                echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
+
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                echo '''withDockerRegistry([credentialsId: 'dockerhub-creds', url: '']) {
-                    script {
-                        docker.image("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}").push()
-                    }
-                '''
-                }
+                echo '''docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}'''
             }
         }
 
