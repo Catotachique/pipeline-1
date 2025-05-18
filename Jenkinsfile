@@ -17,6 +17,7 @@ pipeline {
                 sh '''
                 java -version
                 mvn -v
+                mvn clean package -DskipTests
                 mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
                 touch ${WORKSPACE}/build/computer.txt
@@ -42,6 +43,7 @@ pipeline {
                         echo 'integration tests'
                         sh '''
                         echo "Running integration tests."
+                        mvn test
                         '''
                     }
                 }
@@ -72,6 +74,10 @@ pipeline {
     post {
         success{
             archiveArtifacts artifacts: "build/**"
+            echo "Deployment complete!"
+        }
+        failure {
+            echo "Build or deployment failed!"
         }
         always {
             echo "post"
