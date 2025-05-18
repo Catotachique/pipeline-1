@@ -26,13 +26,25 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'test'
-                sh '''
-                test -f build/computer.txt && echo "File exists." || echo "File does not exist."
-                grep Mainboard build/computer.txt
-                '''
+        stage('Run Tests') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        echo 'unit tests'
+                        sh '''
+                        test -f build/computer.txt && echo "File exists." || echo "File does not exist."
+                        grep Mainboard build/computer.txt
+                        '''
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        echo 'integration tests'
+                        sh '''
+                        echo "Running integration tests..."
+                        '''
+                    }
+                }
             }
         }
 
