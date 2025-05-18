@@ -41,7 +41,7 @@ pipeline {
                     steps {
                         echo 'integration tests'
                         sh '''
-                        echo "Running integration tests..."
+                        echo "Running integration tests."
                         '''
                     }
                 }
