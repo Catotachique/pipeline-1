@@ -17,7 +17,6 @@ pipeline {
                 sh '''
                 java -version
                 mvn -v
-                mvn clean package -DskipTests
                 mkdir -p ${WORKSPACE}/build
                 echo $BUILD_FILE_NAME
                 touch ${WORKSPACE}/build/computer.txt
