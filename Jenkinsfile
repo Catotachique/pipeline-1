@@ -45,6 +45,14 @@ pipeline {
                         '''
                     }
                 }
+                stage('Functional Tests') {
+                    steps {
+                        echo 'functional tests'
+                        sh '''
+                        echo "Running functional tests."
+                        '''
+                    }
+                }
             }
         }
 
