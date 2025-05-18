@@ -60,7 +60,7 @@ pipeline {
             steps {
                 echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
                 def gitSha = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-                echo "Git SHA: ${gitSha}""
+                echo "Git SHA: ${gitSha}"
 
             }
         }
