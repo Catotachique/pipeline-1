@@ -75,6 +75,13 @@ pipeline {
             }
         }
 
+        stage('Approval') {
+            steps {
+                echo 'approval'
+                input message: 'Approve deployment?', ok: 'Deploy'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 echo 'deploy'
