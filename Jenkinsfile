@@ -61,7 +61,7 @@ pipeline {
                 echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
                 script {
                     env.IMAGE_NAME = 'myapp'
-                    env.DATE = sh(script: 'date +%Y%m%d%H%M%S', returnStdout: true).trim()
+                    env.DATE = sh(script: 'date', returnStdout: true).trim()
                 }
             }
         }
