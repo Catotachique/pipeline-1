@@ -59,13 +59,17 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
-
+                script {
+                    env.IMAGE_NAME = 'myapp'
+                    env.DATE = sh(script: 'date +%Y%m%d%H%M%S', returnStdout: true).trim()
+                }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                echo 'docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}'
+                echo 'docker push ${DOCKER_REGISTRY}/${env.IMAGE_NAME}:${IMAGE_TAG}'
+                echo 'DATE is ${env.DATE}'
             }
         }
 
@@ -79,7 +83,7 @@ pipeline {
             steps {
                 echo 'approval' 
                 timeout(time: 1, unit: 'HOURS') { // Timeout for 1 hour
-                    input message: 'Approve deployment?', ok: 'Deploy'
+                    input message: 'approve deployment?', ok: 'deploy'
                 }
             }
         }
