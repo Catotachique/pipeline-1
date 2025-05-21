@@ -68,7 +68,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                echo "docker push ${DOCKER_REGISTRY}/${env.IMAGE_NAME}:${IMAGE_TAG}"
+                echo 'docker push ${DOCKER_REGISTRY}/${env.IMAGE_NAME}:${IMAGE_TAG}'
                 echo "DATE is ${env.DATE}"
             }
         }
