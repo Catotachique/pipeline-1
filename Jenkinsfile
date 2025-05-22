@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Tests') {
             parallel {
                 stage('Unit Tests') {
                     steps {
@@ -56,6 +56,12 @@ pipeline {
             }
         }
         
+        stage('Deploy Staging') {
+            steps {
+                echo 'deploy staging'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 echo 'docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")'
@@ -88,9 +94,9 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Prod') {
             steps {
-                echo 'deploy'
+                echo 'deploy prod'
             }
         }
     }
